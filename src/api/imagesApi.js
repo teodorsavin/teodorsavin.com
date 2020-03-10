@@ -1,7 +1,7 @@
 import { handleResponse, handleError, jsonToQueryString } from "./apiUtils";
 
 export function getImage() {
-  const queryParam = jsonToQueryString({ query: "programming" });
+  const queryParam = jsonToQueryString({ query: "nature" });
 
   const headers = new Headers();
   headers.append("Content-Type", "text/json");
