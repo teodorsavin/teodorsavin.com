@@ -14,6 +14,8 @@ class App extends React.Component {
     const imageObject = await this.getImage();
     const countries = await this.getAllCountries();
 
+    console.log(imageObject);
+
     this.setState({ ...imageObject, countries });
   }
 
@@ -65,7 +67,7 @@ class App extends React.Component {
     return countriesObject;
   }
 
-  test(e, data) {
+  redirect(e, data) {
     window.location.href = `https://news.teodorsavin.com/country/${data.value}`;
   }
 
@@ -76,8 +78,6 @@ class App extends React.Component {
       backgroundSize: "cover"
     };
 
-    console.log(this.state.countries);
-
     return (
       <div className="App" style={appStyle}>
         <header className="App-header">
@@ -86,7 +86,7 @@ class App extends React.Component {
             search
             selection
             options={this.state.countries}
-            onChange={this.test}
+            onChange={this.redirect}
           />
         </header>
       </div>
