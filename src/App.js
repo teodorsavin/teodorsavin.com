@@ -7,7 +7,11 @@ import "semantic-ui-css/semantic.min.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { image: { urls: { raw: {} } }, expire: "", countries: [] };
+    this.state = {
+      image: { urls: { full: "" }, user: { name: "", links: { html: "" } } },
+      expire: "",
+      countries: []
+    };
   }
 
   async componentDidMount() {
@@ -74,7 +78,7 @@ class App extends React.Component {
   render() {
     const appStyle = {
       color: "white",
-      backgroundImage: "url(" + this.state.image.urls.raw + ")",
+      backgroundImage: "url(" + this.state.image.urls.full + ")",
       backgroundSize: "cover"
     };
 
@@ -89,6 +93,26 @@ class App extends React.Component {
             onChange={this.redirect}
           />
         </header>
+        <div className="picAuthor">
+          <span>
+            Picture by:{" "}
+            <a
+              href={this.state.image.user.links.html}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @{this.state.image.user.name}
+            </a>{" "}
+            / Source:{" "}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+          </span>
+        </div>
       </div>
     );
   }

@@ -35,3 +35,26 @@
     transform: rotate(360deg);
   }
 }
+
+.picAuthor {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.picAuthor span {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: black;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+.picAuthor span a,
+.picAuthor span a:hover,
+.picAuthor span a:active {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
