@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       image: { urls: { full: "" }, user: { name: "", links: { html: "" } } },
-      expire: "",
+      expire: 0,
       countries: []
     };
   }
@@ -26,11 +26,12 @@ class App extends React.Component {
   async getImage() {
     let image = localStorage.getItem("background");
     let imageObject = {};
+    let now = new Date().getTime();
 
     if (image !== null) {
       imageObject = JSON.parse(image);
 
-      if (imageObject.expiry > Date.now()) {
+      if (imageObject.expiry > now) {
         return imageObject;
       } else {
         localStorage.clear();
@@ -40,9 +41,10 @@ class App extends React.Component {
     image = await getImage().then(image => {
       return { image };
     });
+
     imageObject = {
       ...image,
-      expiry: Date.now() + process.env.REACT_APP_TTL
+      expiry: now + process.env.REACT_APP_TTL
     };
     localStorage.setItem("background", JSON.stringify(imageObject));
 
