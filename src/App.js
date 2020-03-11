@@ -32,6 +32,8 @@ class App extends React.Component {
 
       if (imageObject.expiry > Date.now()) {
         return imageObject;
+      } else {
+        localStorage.clear();
       }
     }
 
