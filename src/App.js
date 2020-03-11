@@ -3,6 +3,7 @@ import "./App.css";
 import { getImage, getAllCountries } from "./api/imagesApi";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import PHImage from "./images/placeHolder.jpg";
 
 class App extends React.Component {
   constructor(props) {
@@ -77,9 +78,14 @@ class App extends React.Component {
   }
 
   render() {
+    let image = PHImage;
+    if (this.state.image.urls.full !== "") {
+      image = this.state.image.urls.full;
+    }
+
     const appStyle = {
       color: "white",
-      backgroundImage: "url(" + this.state.image.urls.full + ")",
+      backgroundImage: "url(" + image + ")",
       backgroundSize: "cover"
     };
 
