@@ -17,9 +17,6 @@ class App extends React.Component {
   async componentDidMount() {
     const imageObject = await this.getImage();
     const countries = await this.getAllCountries();
-
-    console.log(imageObject);
-
     this.setState({ ...imageObject, countries });
   }
 
@@ -31,7 +28,7 @@ class App extends React.Component {
     if (image !== null) {
       imageObject = JSON.parse(image);
 
-      if (imageObject.expiry > now) {
+      if (parseInt(imageObject.expiry) > now) {
         return imageObject;
       } else {
         localStorage.clear();
@@ -44,7 +41,7 @@ class App extends React.Component {
 
     imageObject = {
       ...image,
-      expiry: now + process.env.REACT_APP_TTL
+      expiry: now + parseInt(process.env.REACT_APP_TTL)
     };
     localStorage.setItem("background", JSON.stringify(imageObject));
 
