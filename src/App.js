@@ -97,7 +97,10 @@ class App extends React.Component {
           <span>
             Picture by:{" "}
             <a
-              href={this.state.image.user.links.html}
+              href={
+                this.state.image.user.links.html +
+                "?utm_source=TeodorSavinNews&utm_medium=referral"
+              }
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -105,7 +108,7 @@ class App extends React.Component {
             </a>{" "}
             / Source:{" "}
             <a
-              href="https://unsplash.com"
+              href="https://unsplash.com?utm_source=TeodorSavinNews&utm_medium=referral"
               target="_blank"
               rel="noopener noreferrer"
             >
